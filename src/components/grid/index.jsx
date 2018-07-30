@@ -33,7 +33,7 @@ class Grid extends Component {
   }
 
   render() {
-    const { colors } = this.props;
+    const { colors, activeColorId } = this.props;
     return (
       <div className="Grid">
         {this.state.items.map((item, index) => (
@@ -43,6 +43,7 @@ class Grid extends Component {
             text={item.color}
             filled={item.filled}
             color={colors[item.color]}
+            activeColor={colors[activeColorId]}
             onItemClick={this.onItemClick}
           />
         ))}

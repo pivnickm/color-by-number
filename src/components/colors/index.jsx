@@ -20,7 +20,9 @@ const ColorList = ({ colors, activeColorId, setActiveColor }) => {
           }
           style={{backgroundColor: color }}
           onClick={() => setActiveColor(index)}
-        />
+        >
+          {index}
+        </div>
       ))}
     </div>
   );

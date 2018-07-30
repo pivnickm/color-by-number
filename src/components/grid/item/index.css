@@ -1,13 +1,9 @@
-/* .GridItem {
-  border: 2px solid #000;
-  height: calc(10vw - 4px);
-  width: calc(10vw - 4px);
-  display: inline-block;
-} */
-
 .GridItem {
+  font-size: .8rem;
   border: 1px solid #000;
-  height: calc(4vw + 1px);
-  width: calc(4vw - 2px);
-  display: inline-block;
+  height: calc(4vw + -2px);
+  width: calc(4vw + -2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
