@@ -1,6 +1,13 @@
-.GridItem {
+/* .GridItem {
   border: 2px solid #000;
   height: calc(10vw - 4px);
   width: calc(10vw - 4px);
+  display: inline-block;
+} */
+
+.GridItem {
+  border: 1px solid #000;
+  height: calc(4vw + 1px);
+  width: calc(4vw - 2px);
   display: inline-block;
 }

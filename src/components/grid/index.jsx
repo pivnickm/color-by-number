@@ -16,8 +16,8 @@ class Grid extends Component {
 
   onItemClick(id) {
     const { items } = this.state;
-    const { colors, activeColorId } = this.props;
-    if (!items[id].filled && items[id].color === colors[activeColorId]) {
+    const { activeColorId } = this.props;
+    if (!items[id].filled && items[id].color === activeColorId) {
       const newItems = items.slice();
       newItems[id] = {
         ...newItems[id],
@@ -40,9 +40,9 @@ class Grid extends Component {
           <GridItem
             key={index}
             gridIndex={index}
-            text={colors.indexOf(item.color) + 1}
-            color={item.color}
+            text={item.color}
             filled={item.filled}
+            color={colors[item.color]}
             onItemClick={this.onItemClick}
           />
         ))}
