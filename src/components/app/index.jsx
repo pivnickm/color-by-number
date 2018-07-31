@@ -1,52 +1,18 @@
 import React, { Component } from 'react';
-
-import './index.css';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as changeColorActions from "../../actions/color";
 import Grid from '../grid';
 import ColorList from '../colors';
 
-const test = {
-  image: [
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 4, filled: true }, {color: 1, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 1, filled: false}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 2, filled: false}, {color: 4, filled: true }, {color: 1, filled: false}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 1, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 1, filled: false}, {color: 1, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 1, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 0, filled: false}, {color: 0, filled: false}, {color: 4, filled: true }, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 1, filled: false}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 1, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 1, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 1, filled: false}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 1, filled: false}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 1, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 2, filled: false}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 4, filled: true }, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true},
-    {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}, {color: 3, filled: true}
-  ],
-  colors: {
-    0: "#578dd1",
-    1: "#bfbfbf",
-    2: "#1173be",
-    3: "#fff",
-    4: "#000"
-  }
-}
+import './index.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      colors: Object.values(test.colors),
+      colors: [],//Object.values(test.colors),
       activeColorId: 0
     };
 
@@ -55,22 +21,25 @@ class App extends Component {
 
   setActiveColor(id) {
     console.log(id); // eslint-disable-line
-    this.setState({
-      activeColorId: id
-    });
+    // this.setState({
+    //   activeColorId: id
+    // });
+    this.props.changeColorActions.changeColor(id);
   }
 
   render() {
+    const { image, colors, activeColorId } = this.props;
+    const colorsArr = Object.values(colors)
     return (
       <div className="App">
         <Grid
-          image={test.image}
-          colors={this.state.colors}
-          activeColorId={this.state.activeColorId}
+          image={image}
+          colors={colorsArr}
+          activeColorId={activeColorId}
         />
         <ColorList
-          colors={this.state.colors}
-          activeColorId={this.state.activeColorId}
+          colors={colorsArr}
+          activeColorId={activeColorId}
           setActiveColor={this.setActiveColor}
         />
       </div>
@@ -78,4 +47,18 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state.images[0]); // eslint-disable-line
+  const { images, color } = state;
+  return {
+    image: images[0].image,
+    activeColorId: color.activeColorId,
+    colors: images[0].colors
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  changeColorActions: bindActionCreators(changeColorActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

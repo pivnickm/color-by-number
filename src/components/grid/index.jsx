@@ -36,7 +36,7 @@ class Grid extends Component {
     const { colors, activeColorId } = this.props;
     return (
       <div className="Grid">
-        {this.state.items.map((item, index) => (
+        {this.props.image.map((item, index) => (
           <GridItem
             key={index}
             gridIndex={index}
