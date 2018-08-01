@@ -4,7 +4,7 @@ import images from './images';
 
 const rootReducer = combineReducers({
   color,
-  images
+  activeImage: images
 });
 
 export default rootReducer;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as changeColorActions from "../../actions/color";
+import * as colorImageActions from "../../actions/image";
 import Grid from '../grid';
 import ColorList from '../colors';
 
@@ -28,14 +29,15 @@ class App extends Component {
   }
 
   render() {
-    const { image, colors, activeColorId } = this.props;
+    const { activeImage, colors, activeColorId, colorImageActions } = this.props;
     const colorsArr = Object.values(colors)
     return (
       <div className="App">
         <Grid
-          image={image}
+          image={activeImage}
           colors={colorsArr}
           activeColorId={activeColorId}
+          onCellClick={colorImageActions.changeColor}
         />
         <ColorList
           colors={colorsArr}
@@ -48,17 +50,17 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.images[0]); // eslint-disable-line
-  const { images, color } = state;
+  const { activeImage, color } = state;
   return {
-    image: images[0].image,
+    activeImage: activeImage.image,
     activeColorId: color.activeColorId,
-    colors: images[0].colors
+    colors: activeImage.colors
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  changeColorActions: bindActionCreators(changeColorActions, dispatch)
+  changeColorActions: bindActionCreators(changeColorActions, dispatch),
+  colorImageActions: bindActionCreators(colorImageActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
