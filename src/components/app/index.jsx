@@ -21,10 +21,6 @@ class App extends Component {
   }
 
   setActiveColor(id) {
-    console.log(id); // eslint-disable-line
-    // this.setState({
-    //   activeColorId: id
-    // });
     this.props.changeColorActions.changeColor(id);
   }
 
