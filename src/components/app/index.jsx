@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 import * as changeColorActions from "../../actions/color";
 import * as colorImageActions from "../../actions/image";
 import Grid from '../grid';
 import ColorList from '../colors';
+import ImageCreator from '../admin/image-creator';
 
 import './index.css';
 
@@ -29,17 +34,29 @@ class App extends Component {
     const colorsArr = Object.values(colors)
     return (
       <div className="App">
-        <Grid
-          image={activeImage}
-          colors={colorsArr}
-          activeColorId={activeColorId}
-          onCellClick={colorImageActions.changeColor}
-        />
-        <ColorList
-          colors={colorsArr}
-          activeColorId={activeColorId}
-          setActiveColor={this.setActiveColor}
-        />
+        <Router>
+          <React.Fragment>
+            <Route exact path="/" render={() => (
+              <React.Fragment>
+                <Grid
+                  image={activeImage}
+                  colors={colorsArr}
+                  activeColorId={activeColorId}
+                  cellSize={100/Math.sqrt(activeImage.length)}
+                  onCellClick={colorImageActions.doFillCell}
+                />
+                <ColorList
+                  colors={colorsArr}
+                  activeColorId={activeColorId}
+                  setActiveColor={this.setActiveColor}
+                />
+              </React.Fragment>
+            )}/>
+            <Route exact path="/admin" render={() => (
+              <ImageCreator />
+            )}/>
+          </React.Fragment>
+        </Router>
       </div>
     );
   }

@@ -3,11 +3,10 @@ import React from 'react';
 import './index.css';
 
 const ColorList = ({ colors, activeColorId, setActiveColor }) => {
-  const nonBWColors = colors.filter((color) => (color !== "#fff" && color !== "#000"));
 
   return (
     <div className="ColorList">
-      {nonBWColors.map((color, index) => (
+      {colors.map((color, index) => (
         <div
           key={color}
           className={`${activeColorId === index
