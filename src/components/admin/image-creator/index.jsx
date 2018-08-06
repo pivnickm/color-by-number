@@ -142,19 +142,4 @@ class ImageCreator extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   const { activeImage, color } = state;
-//   return {
-//     activeImage: activeImage.image,
-//     activeColorId: color.activeColorId,
-//     colors: activeImage.colors
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   changeColorActions: bindActionCreators(changeColorActions, dispatch),
-//   colorImageActions: bindActionCreators(colorImageActions, dispatch)
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default ImageCreator;
