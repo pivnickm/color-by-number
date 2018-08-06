@@ -3,7 +3,7 @@ import React from 'react';
 import './index.css';
 
 const ColorList = ({ colors, activeColorId, setActiveColor }) => {
-  const nonBWColors = colors.filter((color) => (color !== "#fff" && color !== "#000"));
+  const nonBWColors = colors.filter(color => color !== "bg");
 
   return (
     <div className="ColorList">

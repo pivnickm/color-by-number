@@ -11,8 +11,7 @@ const updateStats = (statsObj, image) => {
 };
 
 const initialState = {
-  ...images[1],
-  stats: updateStats(images[1].stats, images[1].image)
+  ...images[3]
 };
 
 export default (state = initialState, action) => {
@@ -22,15 +21,16 @@ export default (state = initialState, action) => {
     const { image } = state;
     if (!image[id].filled && image[id].color === activeColorId) {
       const newImage = state.image.slice();
+      const newStats = state.stats.slice();
       newImage[id] = {
         ...newImage[id],
         filled: true
       };
-
+      newStats[activeColorId]--;
       return {
         ...state,
         image: newImage,
-        stats: updateStats(state.stats, newImage)
+        stats: newStats
       };
     } else {
       return { ...state }
