@@ -29,16 +29,19 @@ const GridItem = ({
   color,
   filled,
   activeColor,
-  cellSize
+  cellSize,
+  isComplete
 }) => {
+  const getCellSize = isComplete ? `${cellSize}vw` : `calc(${cellSize}vw - 2px)`
   return (
     <div
       className="GridItem"
       style={{
         backgroundColor: setBackgroundColor(color, filled, activeColor),
         color: setForegroundColor(color, filled, text),
-        height: `calc(${cellSize}vw - 2px)`,
-        width: `calc(${cellSize}vw - 2px)`,
+        border: isComplete ? "none" : "1px solid #000",
+        height: getCellSize,
+        width: getCellSize,
       }}
       onClick={() => onItemClick(gridIndex)}
     >

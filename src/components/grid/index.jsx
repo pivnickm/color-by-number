@@ -13,7 +13,7 @@ class Grid extends Component {
   }
 
   render() {
-    const { colors, activeColorId, onCellClick, cellSize } = this.props;
+    const { colors, activeColorId, onCellClick, cellSize, isComplete } = this.props;
     return (
       <div className="Grid">
         {this.props.image.map((item, index) => (
@@ -24,6 +24,7 @@ class Grid extends Component {
             filled={item.filled}
             color={colors[item.color]}
             cellSize={cellSize}
+            isComplete={isComplete}
             activeColor={colors[activeColorId]}
             onItemClick={onCellClick}
           />

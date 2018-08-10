@@ -1,6 +1,5 @@
 .GridItem {
   font-size: .8rem;
-  border: 1px solid #000;
   height: calc(4vw + -2px);
   width: calc(4vw + -2px);
   display: flex;
