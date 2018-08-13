@@ -70,8 +70,8 @@ const images = [{
     "#E799D6", //light-pink
     "#bfbfbf", //gray
     "#D682BF", //dark-pink
-    "#fff",
-    "#000"
+    "#000",
+    "#fff"
   ],
   stats: [39, 26, 76, 116, 18]
 }, {

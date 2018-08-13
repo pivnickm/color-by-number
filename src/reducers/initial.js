@@ -14,9 +14,7 @@ if (window.localStorage) {
   parsedGameState = images;
 }
 
-const initialState = {
-  ...parsedGameState
-};
+const initialState = [...parsedGameState];
 
 export default (state = initialState, action) => {
   switch (action.type) {

@@ -16,7 +16,6 @@ class Easel extends Component {
   }
 
   componentDidMount() {
-    console.log("match", this.props.match.params.id); // eslint-disable-line
     // dispatch action creator to set state.initialGameState[params.id]
     // and then set it on the active image and see what happens.
     // at some point there needs to be a state dump to localstorage
@@ -44,7 +43,7 @@ class Easel extends Component {
             image={activeImage}
             colors={colorsArr}
             activeColorId={activeColorId}
-            cellSize={100/Math.sqrt(activeImage ? activeImage.length : 1)}
+            cellSize={`${100/Math.sqrt(activeImage ? activeImage.length : 1)}vw`}
             onCellClick={colorImageActions.doFillCell}
             isComplete={imageStats.every(x => x === 0)}
           />

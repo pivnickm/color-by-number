@@ -32,7 +32,7 @@ const GridItem = ({
   cellSize,
   isComplete
 }) => {
-  const getCellSize = isComplete ? `${cellSize}vw` : `calc(${cellSize}vw - 2px)`
+  const getCellSize = isComplete ? cellSize : `calc(${cellSize} - 2px)`
   return (
     <div
       className="GridItem"
@@ -40,12 +40,14 @@ const GridItem = ({
         backgroundColor: setBackgroundColor(color, filled, activeColor),
         color: setForegroundColor(color, filled, text),
         border: isComplete ? "none" : "1px solid #000",
-        height: getCellSize,
-        width: getCellSize,
+        // height: getCellSize,
+        // width: getCellSize,
+        minHeight: getCellSize,
+        minWidth: getCellSize
       }}
       onClick={() => onItemClick(gridIndex)}
     >
-      {text}
+      {!filled ? text : ""}
     </div>
   );
 };

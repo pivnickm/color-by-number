@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 
 import Easel from '../easel';
+import Home from '../home';
 import ImageCreator from '../admin/image-creator';
 
 import './index.css';
@@ -17,15 +17,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <React.Fragment>
-            <Route exact path="/" render={() => (
-              <div>
-                Home!
-                <Link to="/draw/0">0</Link><br />
-                <Link to="/draw/1">1</Link><br />
-                <Link to="/draw/2">2</Link><br />
-                <Link to="/draw/3">3</Link><br />
-              </div>
-            )}/>
+            <Route exact path="/" component={Home}/>
             <Route path="/draw/:id" component={Easel}/>
             <Route exact path="/admin" component={ImageCreator}/>
           </React.Fragment>
