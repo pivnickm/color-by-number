@@ -1,0 +1,16 @@
+.Home__image_wrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.Home__header {
+  color: #fff;
+  background: #1173be;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+.Home__image {
+  margin: .5rem 0;
+}

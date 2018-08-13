@@ -40,8 +40,6 @@ const GridItem = ({
         backgroundColor: setBackgroundColor(color, filled, activeColor),
         color: setForegroundColor(color, filled, text),
         border: isComplete ? "none" : "1px solid #000",
-        // height: getCellSize,
-        // width: getCellSize,
         minHeight: getCellSize,
         minWidth: getCellSize
       }}
