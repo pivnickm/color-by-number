@@ -1,5 +1,20 @@
 // import images from '../images';
 
+const updateLocalStorage = (imageId, newState) => {
+  /* update localStorage here */
+  // get the current localstorage "game state"
+  const images = JSON.parse(localStorage.getItem("pixelGameState"));
+  // clone and set the current "game state"
+  const newGameState = [
+    ...images
+  ];
+  newGameState[imageId] = newState;
+  // set that on the localStorage
+  localStorage.setItem("pixelGameState", JSON.stringify(newGameState));
+  /* done with localStorage */
+
+}
+
 const initialState = {
   // ...images[3]
   id: 0,
@@ -22,11 +37,16 @@ export default (state = initialState, action) => {
         filled: true
       };
       newStats[activeColorId]--;
-      return {
+
+      const newState = {
         ...state,
         image: newImage,
         stats: newStats
       };
+
+      updateLocalStorage(state.id, newState);
+
+      return newState;
     } else {
       return { ...state }
     }

@@ -19,8 +19,8 @@ class Grid extends Component {
         className="Grid"
         style={{
           width: fullsize ? "100vw" : "100%",
-          height: fullsize ? "100vw": "100%",
-          filter: grayScale ? "grayscale(100%)" : "none"
+          height: fullsize ? "100vw": "100%"/*,
+          filter: grayScale ? "grayscale(100%)" : "none"*/
         }}
       >
         {this.props.image.map((item, index) => (
@@ -34,6 +34,7 @@ class Grid extends Component {
             isComplete={isComplete}
             activeColor={colors[activeColorId]}
             onItemClick={onCellClick}
+            grayScale={grayScale && item.grayScale}
           />
         ))}
       </div>

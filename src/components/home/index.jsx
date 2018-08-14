@@ -16,7 +16,8 @@ class Home extends Component {
     const newImage = image.map((item) => {
       return {
         ...item,
-        filled: true
+        filled: true,
+        grayScale: !item.filled
       }
     });
     return newImage;
@@ -47,7 +48,7 @@ class Home extends Component {
                   cellSize={`${miniGridSize/Math.sqrt(item.image.length)}px`}
                   onCellClick={() => {}}
                   isComplete={item.stats.every(x => x === 0)}
-                  grayScale={!item.stats.every(x => x === 0)}
+                  grayScale={!item.image.some(x => (x.color !== "bk" && x.filled))}
                 />
               </Link>
             </div>

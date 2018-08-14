@@ -30,7 +30,8 @@ const GridItem = ({
   filled,
   activeColor,
   cellSize,
-  isComplete
+  isComplete,
+  grayScale
 }) => {
   const getCellSize = isComplete ? cellSize : `calc(${cellSize} - 2px)`
   return (
@@ -41,7 +42,8 @@ const GridItem = ({
         color: setForegroundColor(color, filled, text),
         border: isComplete ? "none" : "1px solid #000",
         minHeight: getCellSize,
-        minWidth: getCellSize
+        minWidth: getCellSize,
+        filter: grayScale ? "grayscale(100%)" : "none"
       }}
       onClick={() => onItemClick(gridIndex)}
     >
@@ -51,7 +53,8 @@ const GridItem = ({
 };
 
 GridItem.defaultProps = {
-  cellSize: 4
+  cellSize: 4,
+  grayScale: false
 };
 
 export default GridItem;
