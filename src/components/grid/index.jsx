@@ -13,14 +13,13 @@ class Grid extends Component {
   }
 
   render() {
-    const { colors, activeColorId, onCellClick, cellSize, isComplete, fullsize, grayScale } = this.props;
+    const { colors, activeColorId, onCellClick, cellSize, isComplete, fullsize } = this.props;
     return (
       <div
         className="Grid"
         style={{
           width: fullsize ? "100vw" : "100%",
-          height: fullsize ? "100vw": "100%"/*,
-          filter: grayScale ? "grayscale(100%)" : "none"*/
+          height: fullsize ? "100vw": "100%"
         }}
       >
         {this.props.image.map((item, index) => (
@@ -34,7 +33,7 @@ class Grid extends Component {
             isComplete={isComplete}
             activeColor={colors[activeColorId]}
             onItemClick={onCellClick}
-            grayScale={grayScale && item.grayScale}
+            grayScale={item.grayScale}
           />
         ))}
       </div>
@@ -43,8 +42,7 @@ class Grid extends Component {
 }
 
 Grid.defaultProps = {
-  fullsize: true,
-  grayScale: false
+  fullsize: true
 };
 
 export default Grid;
