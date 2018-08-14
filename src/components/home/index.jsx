@@ -46,7 +46,8 @@ class Home extends Component {
                   colors={item.colors}
                   cellSize={`${miniGridSize/Math.sqrt(item.image.length)}px`}
                   onCellClick={() => {}}
-                  isComplete={true}
+                  isComplete={item.stats.every(x => x === 0)}
+                  grayScale={!item.stats.every(x => x === 0)}
                 />
               </Link>
             </div>

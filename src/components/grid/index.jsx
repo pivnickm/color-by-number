@@ -13,13 +13,14 @@ class Grid extends Component {
   }
 
   render() {
-    const { colors, activeColorId, onCellClick, cellSize, isComplete, fullsize } = this.props;
+    const { colors, activeColorId, onCellClick, cellSize, isComplete, fullsize, grayScale } = this.props;
     return (
       <div
         className="Grid"
         style={{
           width: fullsize ? "100vw" : "100%",
-          height: fullsize ? "100vw": "100%"
+          height: fullsize ? "100vw": "100%",
+          filter: grayScale ? "grayscale(100%)" : "none"
         }}
       >
         {this.props.image.map((item, index) => (
@@ -41,7 +42,8 @@ class Grid extends Component {
 }
 
 Grid.defaultProps = {
-  fullsize: true
+  fullsize: true,
+  grayScale: false
 };
 
 export default Grid;
