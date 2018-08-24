@@ -78,7 +78,7 @@ const images = [{
   id: 2,
   completed: false,
   image: [
-    {color:0,filled:false},{color:0,filled:false},{color:0,filled:false},{color:1,filled:true},{color:1,filled:true},{color:1,filled:true},{color:1,filled:true},{color:2,filled:false},{color:2,filled:false},{color:2,filled:false},{color:3,filled:false},{color:3,filled:false},{color:3,filled:false},{color:1,filled:true},{color:1,filled:true},{color:1,filled:true},{color:1,filled:true},{color:4,filled:false},{color:4,filled:false},{color:4,filled:false},{color:5,filled:false},{color:5,filled:false},{color:5,filled:false},{color:1,filled:true},{color:1,filled:true}
+    {color:0,filled:false},{color:0,filled:false},{color:0,filled:false},{color:1,filled:false},{color:1,filled:false},{color:1,filled:false},{color:1,filled:false},{color:2,filled:false},{color:2,filled:false},{color:2,filled:false},{color:3,filled:false},{color:3,filled:false},{color:3,filled:false},{color:1,filled:false},{color:1,filled:false},{color:1,filled:false},{color:1,filled:false},{color:4,filled:false},{color:4,filled:false},{color:4,filled:false},{color:5,filled:false},{color:5,filled:false},{color:5,filled:false},{color:1,filled:false},{color:1,filled:false}
   ],
   colors: [
     "#2ccce4",

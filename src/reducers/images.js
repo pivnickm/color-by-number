@@ -51,7 +51,6 @@ export default (state = initialState, action) => {
       return { ...state }
     }
   case 'ACTIVE_IMAGE':
-    console.log(action.payload); // eslint-disable-line
     return { ...state, ...action.payload };
   default:
     return state;
