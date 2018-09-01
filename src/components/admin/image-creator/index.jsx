@@ -9,13 +9,12 @@ class ImageCreator extends Component {
     super(props);
 
     this.state={
-      rangeValue: 5,
+      rangeValue: 50,
       color: "#000000",
-      imageGrid: this.resetArray(5),
-      uncoloredImageGrid: this.resetArray(5)
+      imageGrid: this.resetArray(50),
+      uncoloredImageGrid: this.resetArray(50)
     };
 
-    this.handleGridSizeChange = this.handleGridSizeChange.bind(this);
     this.addColor = this.addColor.bind(this);
     this.fillCell = this.fillCell.bind(this);
     this.exportImage = this.exportImage.bind(this);
@@ -24,15 +23,6 @@ class ImageCreator extends Component {
 
   resetArray(value) {
     return [...Array(Math.pow(value, 2)).fill({color: "bk", filled: false})];
-  }
-
-  handleGridSizeChange(evt) {
-    const { value } = evt.target;
-    this.setState({
-      rangeValue: value,
-      imageGrid: this.resetArray(value),
-      uncoloredImageGrid: this.resetArray(value),
-    });
   }
 
   addColor(color) {
@@ -98,17 +88,6 @@ class ImageCreator extends Component {
     const { rangeValue, color } = this.state;
     return (
       <div className="ImageCreator">
-        <label htmlFor="gridSize">
-          Grid Size: {rangeValue} x {rangeValue}
-        </label>
-        <input
-          type="range"
-          name="gridSize"
-          min="5"
-          max="25"
-          value={rangeValue}
-          onChange={this.handleGridSizeChange}
-        />
         <div className="Grid">
           {this.state.imageGrid.map((item, index) => (
             <GridItem
@@ -118,7 +97,7 @@ class ImageCreator extends Component {
               filled={item.filled}
               color={item.color}
               activeColor={color}
-              cellSize={100/rangeValue}
+              cellSize={`${window.innerWidth/rangeValue}px`}
               onItemClick={this.fillCell}
             />
           ))}

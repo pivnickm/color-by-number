@@ -17,7 +17,7 @@ class Home extends Component {
       return {
         ...item,
         filled: true,
-        grayScale: !item.filled
+        grayScale: item.filled
       }
     });
     return newImage;

@@ -41,8 +41,8 @@ const GridItem = ({
         backgroundColor: setBackgroundColor(color, filled, activeColor),
         color: setForegroundColor(color, filled, text),
         border: isComplete ? "none" : "1px solid #000",
-        minHeight: getCellSize,
-        minWidth: getCellSize,
+        height: getCellSize,
+        width: getCellSize,
         filter: grayScale ? "grayscale(100%)" : "none"
       }}
       onClick={() => onItemClick(gridIndex)}
