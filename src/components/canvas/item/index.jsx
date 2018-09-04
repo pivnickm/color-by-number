@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { Rect } from 'react-konva';
 
 const setBackgroundColor = (color, filled, activeColor) => {
@@ -12,43 +11,43 @@ const setBackgroundColor = (color, filled, activeColor) => {
   }
 };
 
-const setForegroundColor = (color, filled, text) => {
-  if (text === "bk") {
-    return "#fff";
-  } else if (filled) {
-    return color;
-  } else {
-    return "#000"
+class CanvasItem extends Component {
+  shouldComponentUpdate(newProps) {
+    return (
+      this.props.filled !== newProps.filled ||
+      this.props.activeColor !== newProps.activeColor
+    );
   }
-};
 
-const CanvasItem = ({
-  gridIndex,
-  onItemClick,
-  color,
-  gridSize,
-  filled,
-  activeColor,
-  cellSize,
-  coords,
-  isComplete,
-  grayScale
-}) => {
-  const getCellSize = isComplete ? cellSize : cellSize - 2;
-  const getStroke = (isComplete || !color) ? "transparent": "black";
-  return (
-    <Rect
-      x={coords.x}
-      y={coords.y}
-      width={getCellSize}
-      height={getCellSize}
-      stroke={getStroke}
-      strokeWidth={2}
-      fill={setBackgroundColor(color, filled, activeColor)}
-      onClick={() => onItemClick(gridIndex)}
-      onTap={() => onItemClick(gridIndex)}
-    />
-  );
+  render() {
+    const {
+      gridIndex,
+      onItemClick,
+      color,
+      filled,
+      activeColor,
+      cellSize,
+      coords,
+      isComplete
+    } = this.props;
+    const getCellSize = isComplete ? cellSize : cellSize - 2;
+    const getStroke = (isComplete || !color) ? "transparent": "black";
+    return (
+      <Rect
+        strokeHitEnabled={false}
+        perfectDrawEnabled={false}
+        x={coords.x}
+        y={coords.y}
+        width={getCellSize}
+        height={getCellSize}
+        stroke={getStroke}
+        strokeWidth={2}
+        fill={setBackgroundColor(color, filled, activeColor)}
+        onClick={() => onItemClick(gridIndex)}
+        onTap={() => onItemClick(gridIndex)}
+      />
+    );
+  }
 }
 
 CanvasItem.displayName = "CanvasItem";

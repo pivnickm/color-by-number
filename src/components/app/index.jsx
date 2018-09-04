@@ -6,7 +6,8 @@ import {
 
 import Easel from '../easel';
 import Home from '../home';
-import ImageCreator from '../admin/image-creator';
+// import ImageCreator from '../admin/image-creator';
+import newCreator from '../admin/new-creator';
 
 import './index.css';
 
@@ -19,7 +20,7 @@ class App extends Component {
           <React.Fragment>
             <Route exact path="/" component={Home}/>
             <Route path="/draw/:id" component={Easel}/>
-            <Route exact path="/admin" component={ImageCreator}/>
+            <Route exact path="/admin" component={newCreator}/>
           </React.Fragment>
         </Router>
       </div>

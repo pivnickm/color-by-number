@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as changeColorActions from "../../actions/color";
 import * as colorImageActions from "../../actions/image";
-import Grid from '../grid';
 import ColorList from '../colors';
 import Canvas from '../canvas';
 
@@ -26,7 +25,7 @@ class Easel extends Component {
     this.scaleStageEndTouch = this.scaleStageEndTouch.bind(this);
     this.getDistance = this.getDistance.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
-    this.dragBounds = this.dragBounds.bind(this);
+    // this.dragBounds = this.dragBounds.bind(this);
   }
 
   componentDidMount() {
@@ -79,36 +78,35 @@ class Easel extends Component {
     });
   }
 
-  dragBounds(pos) {
-    let newY;
-    let newX;
+  // dragBounds(pos) {
+  //   let newY;
+  //   let newX;
 
-    if (pos.x <= -50) {
-      newX = -50;
-    } else if (pos.x >= this.width + 50) {
-      newX = this.width + 50;
-    } else {
-      newX = pos.x;
-    }
-    if (pos.y <= -50) {
-      newY = -50;
-    } else if (pos.y >= this.height + 50) {
-      newY = this.height + 50;
-    } else {
-      newY = pos.y;
-    }
-    return {
-        x: newX,
-        y: newY
-    };
-  }
+  //   if (pos.x <= -50) {
+  //     newX = -50;
+  //   } else if (pos.x >= this.width + 50) {
+  //     newX = this.width + 50;
+  //   } else {
+  //     newX = pos.x;
+  //   }
+  //   if (pos.y <= -50) {
+  //     newY = -50;
+  //   } else if (pos.y >= this.height + 50) {
+  //     newY = this.height + 50;
+  //   } else {
+  //     newY = pos.y;
+  //   }
+  //   return {
+  //       x: newX,
+  //       y: newY
+  //   };
+  // }
 
   getDistance(p1, p2) {
     return Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2));
   }
 
   getCellPosition() {
-    const { activeImage } = this.props;
     const cellSize = window.innerWidth / 50
     const maxPerRow = 50;
     let x;
@@ -131,7 +129,6 @@ class Easel extends Component {
 
   render() {
     const {
-      id,
       activeImage,
       colors,
       activeColorId,

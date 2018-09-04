@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Stage, Layer, Line } from "react-konva";
+import { Stage, Layer } from "react-konva";
 
 import CanvasItem from "./item";
 // import styles from "./_index.css";
@@ -13,6 +12,13 @@ class Canvas extends React.Component {
     this.scaleStage = this.scaleStage.bind(this);
     this.scaleStageEndTouch = this.scaleStageEndTouch.bind(this);
   }
+
+  // shouldComponentUpdate(newProps) {
+  //   return (
+  //     this.props.x !== newProps.x ||
+  //     this.props.y !== newProps.y
+  //   );
+  // }
 
   componentDidMount() {
     if (this.stageRef.current) {
@@ -50,7 +56,6 @@ class Canvas extends React.Component {
       handleDragEnd,
       positions
     } = this.props;
-    const gridSize = width/50;
     const isDraggable = this.stageRef.current ? this.stageRef.current.getStage().getScaleX() > 1 ? true : false : false;
 
     return (
