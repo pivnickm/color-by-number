@@ -30,8 +30,10 @@ export default (state = initialState, action) => {
     const { id, activeColorId } = action.payload;
     const { image } = state;
     if (!image[id].filled && image[id].color === activeColorId) {
-      const newImage = state.image.slice();
-      const newStats = state.stats.slice();
+      // const newImage = state.image.slice(0);
+      // const newStats = state.stats.slice(0);
+      const newImage = [].concat(state.image);
+      const newStats = [].concat(state.stats);
       newImage[id] = {
         ...newImage[id],
         filled: true
