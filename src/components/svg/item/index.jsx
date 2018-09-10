@@ -10,12 +10,6 @@ class SvgItem extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    /*console.log({
-      a: nextProps.item.filled,
-      b: this.props.item.filled,
-      c: nextProps.activeColorId,
-      d: this.props.item.color
-    }); // eslint-disable-line */
     return nextProps.item.filled !== this.props.item.filled || (nextProps.activeColorId !== this.props.activeColorId);
   }
 
