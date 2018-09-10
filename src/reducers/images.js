@@ -30,8 +30,8 @@ export default (state = initialState, action) => {
     const { id, activeColorId } = action.payload;
     const { image } = state;
     if (!image[id].filled && image[id].color === activeColorId) {
-      const newImage = state.image.slice(0);
-      const newStats = state.stats.slice(0);
+      const newImage = state.image.slice();
+      const newStats = state.stats.slice();
       newImage[id] = {
         ...newImage[id],
         filled: true
@@ -51,6 +51,7 @@ export default (state = initialState, action) => {
       return { ...state }
     }
   case 'ACTIVE_IMAGE':
+    console.log(action.payload); // eslint-disable-line
     return { ...state, ...action.payload };
   default:
     return state;

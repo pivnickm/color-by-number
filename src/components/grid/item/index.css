@@ -1,0 +1,8 @@
+.GridItem {
+  font-size: .8rem;
+  /* height: calc(4vw + -2px);
+  width: calc(4vw + -2px); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
