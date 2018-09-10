@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   padding-left: 1rem;
-  margin-top: 1rem;
   overflow-x: scroll;
 }
 
@@ -10,13 +9,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 75px;
-  width: 75px;
+  height: 50px;
+  width: 50px;
   font-size: 1.5rem;
   flex: 0 0 auto;
   border-radius: 50%;
   margin: 0 .5rem;
-  border: 5px solid transparent;
+  border: 1px solid #ccc;
 }
 
 .ColorList__item.active {
